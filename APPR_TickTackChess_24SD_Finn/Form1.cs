@@ -16,5 +16,10 @@ namespace APPR_TickTackChess_24SD_Finn
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

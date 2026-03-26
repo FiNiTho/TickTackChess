@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gbxBoard = new System.Windows.Forms.GroupBox();
             this.pcbFive = new System.Windows.Forms.PictureBox();
             this.pcbNine = new System.Windows.Forms.PictureBox();
@@ -290,8 +291,9 @@
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.gbxPieces);
             this.Controls.Add(this.gbxBoard);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "XAMPP Controll Panel v3.3.0 [ Compied: Apr 6th 2021 ]";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbxBoard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcbFive)).EndInit();

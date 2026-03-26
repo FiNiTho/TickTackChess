@@ -12,6 +12,7 @@ namespace APPR_TickTackChess_24SD_Finn
         private int horizontal = 0;
         private int vertical = 0;
         private string imagename = "";
+        private Piece currentPiece = null;
 
         //Constructor
         public Board(int c_horizontal, int c_vertical, string c_imagename)
@@ -21,7 +22,16 @@ namespace APPR_TickTackChess_24SD_Finn
             imagename = c_imagename;
         }
 
+        public void SetPiece(Piece newPiece)
+        {
+            currentPiece = newPiece;
+        }
+
         //Gets
+        public Piece GetPiece()
+        {
+            return currentPiece;
+        }
         public int GetHorizontal()
         {
             return horizontal;

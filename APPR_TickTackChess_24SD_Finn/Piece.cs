@@ -122,6 +122,20 @@ namespace APPR_TickTackChess_24SD_Finn
             }
         }
 
+        public string GetDebugInfo()
+        {
+            return $"Name: {name}\n" +
+                $"Color: {color}\n" +
+                $"Location: {curHor},{curVer}\n";
+
+        }
+
+        public string GetName() { return name; }
+
+        public string GetLocationTag() { return $"{curHor}{curVer}"; }
+
+        public string GetLocation() { return $"{curHor},{curVer}"; }
+
         public int GetCurrentHorizontal() { return curHor;  }
 
         public int GetCurrentVertical() { return curVer; }

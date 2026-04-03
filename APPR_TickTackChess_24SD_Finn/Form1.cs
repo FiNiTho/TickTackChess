@@ -35,6 +35,9 @@ namespace APPR_TickTackChess_24SD_Finn
         List<PictureBox> White_List = new List<PictureBox>();
         List<PictureBox> Black_List = new List<PictureBox>();
 
+        List<PictureBox> White_Placement = new List<PictureBox>();
+        List<PictureBox> Black_Placement = new List<PictureBox>();
+
         bool gameState = false;
         string currentTurn = "";
 
@@ -73,6 +76,16 @@ namespace APPR_TickTackChess_24SD_Finn
             boardlist.Add(new Board(1, 3, "pcbSeven"));
             boardlist.Add(new Board(2, 3, "pcbEight"));
             boardlist.Add(new Board(3, 3, "pcbNine"));
+
+            White_Placement.Clear();
+            White_Placement.Add(pcbSeven);
+            White_Placement.Add(pcbEight);
+            White_Placement.Add(pcbNine);
+
+            Black_Placement.Clear();
+            Black_Placement.Add(pcbOne);
+            Black_Placement.Add(pcbTwo);
+            Black_Placement.Add(pcbThree);
         }
 
         private void rbnWhite_CheckedChanged(object sender, EventArgs e)
@@ -88,18 +101,6 @@ namespace APPR_TickTackChess_24SD_Finn
         private void pcbPieces_MouseDown(object sender, MouseEventArgs e)
         {
             pcbFrom = (PictureBox)sender;
-
-            List<PictureBox> White_Placement = new List<PictureBox>();
-            White_Placement.Add(pcbSeven);
-            White_Placement.Add(pcbEight);
-            White_Placement.Add(pcbNine);
-            White_Placement.Add(pcbFour);
-
-            List<PictureBox> Black_Placement = new List<PictureBox>();
-            Black_Placement.Add(pcbOne);
-            Black_Placement.Add(pcbTwo);
-            Black_Placement.Add(pcbThree);
-            Black_Placement.Add(pcbSix);
 
             if (pcbFrom.Image != null)
             {
@@ -260,12 +261,22 @@ namespace APPR_TickTackChess_24SD_Finn
             {
                 foreach (PictureBox pcb in gbxBoard.Controls.OfType<PictureBox>())
                 {
-                    if (pcb.Tag.ToString() == pieceOptions[i].ToString() + pieceOptions[i + 1].ToString() && pcb.Image == null && checkLegalMove(horizontal, vertical))
+                    string tag = pcb.Tag.ToString();
+
+                    int hor = int.Parse(tag.Substring(0, 1));
+                    int ver = int.Parse(tag.Substring(1, 1));
+
+                    if (tag == pieceOptions[i].ToString() + pieceOptions[i + 1].ToString()
+                        && pcb.Image == null)
                     {
-                        pcb.BackColor = allowDropColor;
+                        if(checkLegalMove(hor, ver))
+                        {
+                            pcb.BackColor = allowDropColor;
+                        }
                     }
                 }
             }
+            Console.WriteLine($"---bomboclad");
         }
 
         //Sets the horizontal and vertival variable based on picturebox name
@@ -310,7 +321,8 @@ namespace APPR_TickTackChess_24SD_Finn
 
         private bool checkLegalMove(int targetHor, int targetVer)
         {
-            Piece currentSelected = piecelist.FirstOrDefault(p => p.GetName() == currentPiece.GetName());
+            //Checks for rules of the queen and rook
+            Piece currentSelected = piecelist.FirstOrDefault(p => p.GetName() == currentPiece.GetName() && p.GetColor() == currentPiece.GetColor());
             if (currentSelected.GetName() == "Knight") return true;
 
             string[] parts = currentSelected.GetLocation().Split(',');
@@ -399,13 +411,20 @@ namespace APPR_TickTackChess_24SD_Finn
                     {
                         if (selectedBoard.GetPiece().GetColor() == "White")
                         {
-                            MessageBox.Show("White won!");
+                            if (selectedBoard.GetVertical() != 3)
+                            {
+                                MessageBox.Show("White won!");
+                                ResetGame();
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Black won!");
+                            if (selectedBoard.GetVertical() != 1)
+                            {
+                                MessageBox.Show("Black won!");
+                                ResetGame();
+                            }
                         }
-                        ResetGame();
                     }
                 }
             }
@@ -424,6 +443,11 @@ namespace APPR_TickTackChess_24SD_Finn
                 pcb.BackColor = backgroundColor;
                 pcb.Image = null;
                 pcb.AllowDrop = true;
+            }
+
+            foreach (Board board in boardlist)
+            {
+                board.SetPiece(null);
             }
 
             gameState = false;
@@ -448,23 +472,6 @@ namespace APPR_TickTackChess_24SD_Finn
             //Clear colors
             ClearBoardColors();
         }
-
-        //private void BlockOpponentSquares()
-        //{
-        //    foreach (Piece piece in piecelist.Where(x => x.GetColor() != currentTurn))
-        //    {
-        //        string location = piece.GetLocationTag();
-
-        //        foreach (PictureBox pcb in gbxBoard.Controls.OfType<PictureBox>())
-        //        {
-        //            if (pcb.Tag?.ToString() == location)
-        //            {
-        //                pcb.BackColor = notAllowedDropColor;
-
-        //            }
-        //        }
-        //    }
-        //}
 
         private void BlockOpponentSquares()
         {

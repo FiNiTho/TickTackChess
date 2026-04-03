@@ -30,6 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gbxBoard = new System.Windows.Forms.GroupBox();
+            this.gbxPieces = new System.Windows.Forms.GroupBox();
+            this.btnRestart = new System.Windows.Forms.Button();
+            this.rbnWhite = new System.Windows.Forms.RadioButton();
+            this.rbnBlack = new System.Windows.Forms.RadioButton();
+            this.lblGameState = new System.Windows.Forms.Label();
+            this.pcbRook = new System.Windows.Forms.PictureBox();
+            this.pcbKnight = new System.Windows.Forms.PictureBox();
+            this.pcbQueen = new System.Windows.Forms.PictureBox();
             this.pcbFive = new System.Windows.Forms.PictureBox();
             this.pcbNine = new System.Windows.Forms.PictureBox();
             this.pcbOne = new System.Windows.Forms.PictureBox();
@@ -39,15 +47,11 @@
             this.pcbThree = new System.Windows.Forms.PictureBox();
             this.pcbSix = new System.Windows.Forms.PictureBox();
             this.pcbFour = new System.Windows.Forms.PictureBox();
-            this.gbxPieces = new System.Windows.Forms.GroupBox();
-            this.pcbRook = new System.Windows.Forms.PictureBox();
-            this.pcbKnight = new System.Windows.Forms.PictureBox();
-            this.pcbQueen = new System.Windows.Forms.PictureBox();
-            this.btnRestart = new System.Windows.Forms.Button();
-            this.rbnWhite = new System.Windows.Forms.RadioButton();
-            this.rbnBlack = new System.Windows.Forms.RadioButton();
-            this.lblGameState = new System.Windows.Forms.Label();
             this.gbxBoard.SuspendLayout();
+            this.gbxPieces.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbNine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbOne)).BeginInit();
@@ -57,15 +61,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbThree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbSix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFour)).BeginInit();
-            this.gbxPieces.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxBoard
             // 
-            this.gbxBoard.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gbxBoard.BackColor = System.Drawing.SystemColors.ControlText;
             this.gbxBoard.Controls.Add(this.pcbFive);
             this.gbxBoard.Controls.Add(this.pcbNine);
             this.gbxBoard.Controls.Add(this.pcbOne);
@@ -83,158 +83,19 @@
             this.gbxBoard.TabStop = false;
             this.gbxBoard.Text = "Board";
             // 
-            // pcbFive
-            // 
-            this.pcbFive.Location = new System.Drawing.Point(116, 126);
-            this.pcbFive.Name = "pcbFive";
-            this.pcbFive.Size = new System.Drawing.Size(100, 105);
-            this.pcbFive.TabIndex = 4;
-            this.pcbFive.TabStop = false;
-            this.pcbFive.Tag = "22";
-            this.pcbFive.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbFive.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbFive.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
-            // pcbNine
-            // 
-            this.pcbNine.Location = new System.Drawing.Point(222, 237);
-            this.pcbNine.Name = "pcbNine";
-            this.pcbNine.Size = new System.Drawing.Size(100, 105);
-            this.pcbNine.TabIndex = 8;
-            this.pcbNine.TabStop = false;
-            this.pcbNine.Tag = "33";
-            this.pcbNine.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbNine.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbNine.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
-            // pcbOne
-            // 
-            this.pcbOne.Location = new System.Drawing.Point(10, 15);
-            this.pcbOne.Name = "pcbOne";
-            this.pcbOne.Size = new System.Drawing.Size(100, 105);
-            this.pcbOne.TabIndex = 0;
-            this.pcbOne.TabStop = false;
-            this.pcbOne.Tag = "11";
-            this.pcbOne.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbOne.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbOne.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
-            // pcbEight
-            // 
-            this.pcbEight.Location = new System.Drawing.Point(116, 237);
-            this.pcbEight.Name = "pcbEight";
-            this.pcbEight.Size = new System.Drawing.Size(100, 105);
-            this.pcbEight.TabIndex = 7;
-            this.pcbEight.TabStop = false;
-            this.pcbEight.Tag = "23";
-            this.pcbEight.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbEight.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbEight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
-            // pcbTwo
-            // 
-            this.pcbTwo.Location = new System.Drawing.Point(116, 15);
-            this.pcbTwo.Name = "pcbTwo";
-            this.pcbTwo.Size = new System.Drawing.Size(100, 105);
-            this.pcbTwo.TabIndex = 1;
-            this.pcbTwo.TabStop = false;
-            this.pcbTwo.Tag = "21";
-            this.pcbTwo.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbTwo.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbTwo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
-            // pcbSeven
-            // 
-            this.pcbSeven.Location = new System.Drawing.Point(10, 237);
-            this.pcbSeven.Name = "pcbSeven";
-            this.pcbSeven.Size = new System.Drawing.Size(100, 105);
-            this.pcbSeven.TabIndex = 6;
-            this.pcbSeven.TabStop = false;
-            this.pcbSeven.Tag = "13";
-            this.pcbSeven.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbSeven.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbSeven.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
-            // pcbThree
-            // 
-            this.pcbThree.Location = new System.Drawing.Point(222, 15);
-            this.pcbThree.Name = "pcbThree";
-            this.pcbThree.Size = new System.Drawing.Size(100, 105);
-            this.pcbThree.TabIndex = 2;
-            this.pcbThree.TabStop = false;
-            this.pcbThree.Tag = "31";
-            this.pcbThree.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbThree.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbThree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
-            // pcbSix
-            // 
-            this.pcbSix.Location = new System.Drawing.Point(222, 126);
-            this.pcbSix.Name = "pcbSix";
-            this.pcbSix.Size = new System.Drawing.Size(100, 105);
-            this.pcbSix.TabIndex = 5;
-            this.pcbSix.TabStop = false;
-            this.pcbSix.Tag = "32";
-            this.pcbSix.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbSix.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbSix.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
-            // pcbFour
-            // 
-            this.pcbFour.Location = new System.Drawing.Point(10, 126);
-            this.pcbFour.Name = "pcbFour";
-            this.pcbFour.Size = new System.Drawing.Size(100, 105);
-            this.pcbFour.TabIndex = 3;
-            this.pcbFour.TabStop = false;
-            this.pcbFour.Tag = "12";
-            this.pcbFour.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
-            this.pcbFour.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
-            this.pcbFour.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
-            // 
             // gbxPieces
             // 
+            this.gbxPieces.BackColor = System.Drawing.SystemColors.ControlText;
             this.gbxPieces.Controls.Add(this.pcbRook);
             this.gbxPieces.Controls.Add(this.pcbKnight);
             this.gbxPieces.Controls.Add(this.pcbQueen);
+            this.gbxPieces.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.gbxPieces.Location = new System.Drawing.Point(365, 59);
             this.gbxPieces.Name = "gbxPieces";
             this.gbxPieces.Size = new System.Drawing.Size(118, 354);
             this.gbxPieces.TabIndex = 10;
             this.gbxPieces.TabStop = false;
             this.gbxPieces.Text = "Pieces";
-            // 
-            // pcbRook
-            // 
-            this.pcbRook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pcbRook.Location = new System.Drawing.Point(9, 15);
-            this.pcbRook.Name = "pcbRook";
-            this.pcbRook.Size = new System.Drawing.Size(100, 105);
-            this.pcbRook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbRook.TabIndex = 9;
-            this.pcbRook.TabStop = false;
-            this.pcbRook.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
-            // 
-            // pcbKnight
-            // 
-            this.pcbKnight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcbKnight.Location = new System.Drawing.Point(9, 126);
-            this.pcbKnight.Name = "pcbKnight";
-            this.pcbKnight.Size = new System.Drawing.Size(100, 105);
-            this.pcbKnight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbKnight.TabIndex = 10;
-            this.pcbKnight.TabStop = false;
-            this.pcbKnight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
-            // 
-            // pcbQueen
-            // 
-            this.pcbQueen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcbQueen.Location = new System.Drawing.Point(9, 237);
-            this.pcbQueen.Name = "pcbQueen";
-            this.pcbQueen.Size = new System.Drawing.Size(100, 105);
-            this.pcbQueen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbQueen.TabIndex = 11;
-            this.pcbQueen.TabStop = false;
-            this.pcbQueen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
             // 
             // btnRestart
             // 
@@ -274,11 +135,164 @@
             // 
             this.lblGameState.AutoSize = true;
             this.lblGameState.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGameState.Location = new System.Drawing.Point(154, 24);
+            this.lblGameState.Location = new System.Drawing.Point(150, 24);
             this.lblGameState.Name = "lblGameState";
             this.lblGameState.Size = new System.Drawing.Size(107, 19);
             this.lblGameState.TabIndex = 14;
             this.lblGameState.Text = "Choose pieces";
+            // 
+            // pcbRook
+            // 
+            this.pcbRook.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbRook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pcbRook.Location = new System.Drawing.Point(9, 15);
+            this.pcbRook.Name = "pcbRook";
+            this.pcbRook.Size = new System.Drawing.Size(100, 105);
+            this.pcbRook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbRook.TabIndex = 9;
+            this.pcbRook.TabStop = false;
+            this.pcbRook.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
+            // 
+            // pcbKnight
+            // 
+            this.pcbKnight.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbKnight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcbKnight.Location = new System.Drawing.Point(9, 126);
+            this.pcbKnight.Name = "pcbKnight";
+            this.pcbKnight.Size = new System.Drawing.Size(100, 105);
+            this.pcbKnight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbKnight.TabIndex = 10;
+            this.pcbKnight.TabStop = false;
+            this.pcbKnight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
+            // 
+            // pcbQueen
+            // 
+            this.pcbQueen.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbQueen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcbQueen.Location = new System.Drawing.Point(9, 237);
+            this.pcbQueen.Name = "pcbQueen";
+            this.pcbQueen.Size = new System.Drawing.Size(100, 105);
+            this.pcbQueen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbQueen.TabIndex = 11;
+            this.pcbQueen.TabStop = false;
+            this.pcbQueen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
+            // 
+            // pcbFive
+            // 
+            this.pcbFive.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbFive.Location = new System.Drawing.Point(116, 126);
+            this.pcbFive.Name = "pcbFive";
+            this.pcbFive.Size = new System.Drawing.Size(100, 105);
+            this.pcbFive.TabIndex = 4;
+            this.pcbFive.TabStop = false;
+            this.pcbFive.Tag = "22";
+            this.pcbFive.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbFive.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbFive.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
+            // 
+            // pcbNine
+            // 
+            this.pcbNine.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbNine.Location = new System.Drawing.Point(222, 237);
+            this.pcbNine.Name = "pcbNine";
+            this.pcbNine.Size = new System.Drawing.Size(100, 105);
+            this.pcbNine.TabIndex = 8;
+            this.pcbNine.TabStop = false;
+            this.pcbNine.Tag = "33";
+            this.pcbNine.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbNine.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbNine.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
+            // 
+            // pcbOne
+            // 
+            this.pcbOne.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbOne.Location = new System.Drawing.Point(10, 15);
+            this.pcbOne.Name = "pcbOne";
+            this.pcbOne.Size = new System.Drawing.Size(100, 105);
+            this.pcbOne.TabIndex = 0;
+            this.pcbOne.TabStop = false;
+            this.pcbOne.Tag = "11";
+            this.pcbOne.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbOne.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbOne.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
+            // 
+            // pcbEight
+            // 
+            this.pcbEight.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbEight.Location = new System.Drawing.Point(116, 237);
+            this.pcbEight.Name = "pcbEight";
+            this.pcbEight.Size = new System.Drawing.Size(100, 105);
+            this.pcbEight.TabIndex = 7;
+            this.pcbEight.TabStop = false;
+            this.pcbEight.Tag = "23";
+            this.pcbEight.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbEight.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbEight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
+            // 
+            // pcbTwo
+            // 
+            this.pcbTwo.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbTwo.Location = new System.Drawing.Point(116, 15);
+            this.pcbTwo.Name = "pcbTwo";
+            this.pcbTwo.Size = new System.Drawing.Size(100, 105);
+            this.pcbTwo.TabIndex = 1;
+            this.pcbTwo.TabStop = false;
+            this.pcbTwo.Tag = "21";
+            this.pcbTwo.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbTwo.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbTwo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
+            // 
+            // pcbSeven
+            // 
+            this.pcbSeven.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbSeven.Location = new System.Drawing.Point(10, 237);
+            this.pcbSeven.Name = "pcbSeven";
+            this.pcbSeven.Size = new System.Drawing.Size(100, 105);
+            this.pcbSeven.TabIndex = 6;
+            this.pcbSeven.TabStop = false;
+            this.pcbSeven.Tag = "13";
+            this.pcbSeven.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbSeven.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbSeven.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
+            // 
+            // pcbThree
+            // 
+            this.pcbThree.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbThree.Location = new System.Drawing.Point(222, 15);
+            this.pcbThree.Name = "pcbThree";
+            this.pcbThree.Size = new System.Drawing.Size(100, 105);
+            this.pcbThree.TabIndex = 2;
+            this.pcbThree.TabStop = false;
+            this.pcbThree.Tag = "31";
+            this.pcbThree.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbThree.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbThree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
+            // 
+            // pcbSix
+            // 
+            this.pcbSix.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbSix.Location = new System.Drawing.Point(222, 126);
+            this.pcbSix.Name = "pcbSix";
+            this.pcbSix.Size = new System.Drawing.Size(100, 105);
+            this.pcbSix.TabIndex = 5;
+            this.pcbSix.TabStop = false;
+            this.pcbSix.Tag = "32";
+            this.pcbSix.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbSix.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbSix.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
+            // 
+            // pcbFour
+            // 
+            this.pcbFour.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbFour.Location = new System.Drawing.Point(10, 126);
+            this.pcbFour.Name = "pcbFour";
+            this.pcbFour.Size = new System.Drawing.Size(100, 105);
+            this.pcbFour.TabIndex = 3;
+            this.pcbFour.TabStop = false;
+            this.pcbFour.Tag = "12";
+            this.pcbFour.DragDrop += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragDrop);
+            this.pcbFour.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
+            this.pcbFour.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
             // 
             // Form1
             // 
@@ -293,9 +307,13 @@
             this.Controls.Add(this.gbxBoard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "XAMPP Controll Panel v3.3.0 [ Compied: Apr 6th 2021 ]";
+            this.Text = "TikTakChess";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbxBoard.ResumeLayout(false);
+            this.gbxPieces.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbNine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbOne)).EndInit();
@@ -305,10 +323,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbThree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbSix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFour)).EndInit();
-            this.gbxPieces.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

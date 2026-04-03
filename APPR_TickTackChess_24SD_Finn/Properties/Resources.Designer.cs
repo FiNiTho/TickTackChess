@@ -93,6 +93,16 @@ namespace APPR_TickTackChess_24SD_Finn.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TikTakChess {
+            get {
+                object obj = ResourceManager.GetObject("TikTakChess", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap White_Knight {
             get {
                 object obj = ResourceManager.GetObject("White_Knight", resourceCulture);

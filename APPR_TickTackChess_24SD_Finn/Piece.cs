@@ -12,7 +12,8 @@ namespace APPR_TickTackChess_24SD_Finn
         //Properties
         private string name = "";
         private string color = "";
-        private string moveOptions = "";
+        private List<string> moveOptions = new List<string>();
+        //private string moveOptions = "";
         private int curHor, curVer, newHor, newVer;
 
         //Constructor
@@ -20,6 +21,7 @@ namespace APPR_TickTackChess_24SD_Finn
         {
             name = c_name;
             color = c_color;
+            moveOptions.Clear();
         }
 
         //Updates the new location
@@ -30,11 +32,11 @@ namespace APPR_TickTackChess_24SD_Finn
         }
 
         //Based on the object you move it uses the move method
-        public string GetMoveOptions(int _newHor, int _newVer)
+        public string[] GetMoveOptions(int _newHor, int _newVer)
         {
             newHor = _newHor;
             newVer = _newVer;
-            moveOptions = "";
+            moveOptions.Clear();
 
             switch (name)
             {
@@ -45,7 +47,7 @@ namespace APPR_TickTackChess_24SD_Finn
                     break;
             }
 
-            return moveOptions;
+            return moveOptions.ToArray();
         }
 
         //Movement of the Rook
@@ -61,7 +63,7 @@ namespace APPR_TickTackChess_24SD_Finn
             {
                 if (temp_hor == 0)
                 {
-                    moveOptions = $"{newHor}{newVer}";
+                    moveOptions.Add($"{newHor}{newVer}");
                 }
             }
             //If you move 2 or 1 horizontal the rook cant move vertical
@@ -69,7 +71,7 @@ namespace APPR_TickTackChess_24SD_Finn
             {
                 if (temp_ver == 0)
                 {
-                    moveOptions = $"{newHor}{newVer}";
+                    moveOptions.Add($"{newHor}{newVer}");
                 }
             }
         }
@@ -83,14 +85,14 @@ namespace APPR_TickTackChess_24SD_Finn
             {
                 if (temp_hor == 1)
                 {
-                    moveOptions = $"{newHor}{newVer}";
+                    moveOptions.Add($"{newHor}{newVer}");
                 }
             }
             else if (temp_hor == 2)
             {
                 if (temp_ver == 1)
                 {
-                    moveOptions = $"{newHor}{newVer}";
+                    moveOptions.Add($"{newHor}{newVer}");
                 }
             }
         }
@@ -103,21 +105,21 @@ namespace APPR_TickTackChess_24SD_Finn
             //moves like an X
             if (temp_ver == 1 && temp_hor == 1 || temp_ver == 2 && temp_hor == 2)
             {
-                moveOptions = $"{newHor}{newVer}";
+                moveOptions.Add($"{newHor}{newVer}");
             }
             //Moves like the rook
             else if (temp_hor == 2 || temp_hor == 1)
             {
                 if (temp_ver == 0)
                 {
-                    moveOptions = $"{newHor}{newVer}";
+                    moveOptions.Add($"{newHor}{newVer}");
                 }
             }
             else if (temp_ver == 2 || temp_ver == 1)
             {
                 if (temp_hor == 0)
                 {
-                    moveOptions = $"{newHor}{newVer}";
+                    moveOptions.Add($"{newHor}{newVer}");
                 }
             }
         }

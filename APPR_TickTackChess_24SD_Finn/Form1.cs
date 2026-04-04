@@ -24,7 +24,7 @@ namespace APPR_TickTackChess_24SD_Finn
 
         int horizontal = 0;
         int vertical = 0;
-        string pieceOptions = "";
+        List<string> pieceOptions = new List<string>();
         List<Board> boardlist = new List<Board>();
         List<Piece> piecelist = new List<Piece>();
 
@@ -223,30 +223,34 @@ namespace APPR_TickTackChess_24SD_Finn
         #region Game functions
         public void GetBoardOptions()
         {
-            pieceOptions = "";
+            pieceOptions.Clear();
+
             foreach (Board board in boardlist)
             {
                 if (currentPiece != null)
                 {
-                    pieceOptions += currentPiece.GetMoveOptions(board.GetHorizontal(), board.GetVertical());
+                    string[] validMoves = currentPiece.GetMoveOptions(
+                        board.GetHorizontal(),
+                        board.GetVertical());
+
+                    pieceOptions.AddRange(validMoves);
                 }
             }
         }
 
         public void UpdateBoardPieceLocations()
         {
-            for (int i = 0; i < pieceOptions.Length; i += 2)
+            foreach (string option in pieceOptions)
             {
                 foreach (PictureBox pcb in gbxBoard.Controls.OfType<PictureBox>())
                 {
                     string tag = pcb.Tag.ToString();
 
-                    int hor = int.Parse(tag.Substring(0, 1));
-                    int ver = int.Parse(tag.Substring(1, 1));
-
-                    if (tag == pieceOptions[i].ToString() + pieceOptions[i + 1].ToString()
-                        && pcb.Image == null)
+                    if (tag == option && pcb.Image == null)
                     {
+                        int hor = int.Parse(tag.Substring(0, 1));
+                        int ver = int.Parse(tag.Substring(1, 1));
+
                         if (checkLegalMove(hor, ver))
                         {
                             pcb.BackColor = allowDropColor;

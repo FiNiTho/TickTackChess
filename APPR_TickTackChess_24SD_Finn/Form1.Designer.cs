@@ -30,14 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gbxBoard = new System.Windows.Forms.GroupBox();
-            this.gbxPieces = new System.Windows.Forms.GroupBox();
-            this.btnRestart = new System.Windows.Forms.Button();
-            this.rbnWhite = new System.Windows.Forms.RadioButton();
-            this.rbnBlack = new System.Windows.Forms.RadioButton();
-            this.lblGameState = new System.Windows.Forms.Label();
-            this.pcbRook = new System.Windows.Forms.PictureBox();
-            this.pcbKnight = new System.Windows.Forms.PictureBox();
-            this.pcbQueen = new System.Windows.Forms.PictureBox();
             this.pcbFive = new System.Windows.Forms.PictureBox();
             this.pcbNine = new System.Windows.Forms.PictureBox();
             this.pcbOne = new System.Windows.Forms.PictureBox();
@@ -47,11 +39,18 @@
             this.pcbThree = new System.Windows.Forms.PictureBox();
             this.pcbSix = new System.Windows.Forms.PictureBox();
             this.pcbFour = new System.Windows.Forms.PictureBox();
+            this.gbxPieces = new System.Windows.Forms.GroupBox();
+            this.pcbWizard = new System.Windows.Forms.PictureBox();
+            this.pcbKing = new System.Windows.Forms.PictureBox();
+            this.pcbRook = new System.Windows.Forms.PictureBox();
+            this.pcbKnight = new System.Windows.Forms.PictureBox();
+            this.pcbQueen = new System.Windows.Forms.PictureBox();
+            this.btnRestart = new System.Windows.Forms.Button();
+            this.rbnWhite = new System.Windows.Forms.RadioButton();
+            this.rbnBlack = new System.Windows.Forms.RadioButton();
+            this.lblGameState = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.gbxBoard.SuspendLayout();
-            this.gbxPieces.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbNine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbOne)).BeginInit();
@@ -61,11 +60,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbThree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbSix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFour)).BeginInit();
+            this.gbxPieces.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbWizard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbKing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxBoard
             // 
-            this.gbxBoard.BackColor = System.Drawing.SystemColors.ControlText;
+            this.gbxBoard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
             this.gbxBoard.Controls.Add(this.pcbFive);
             this.gbxBoard.Controls.Add(this.pcbNine);
             this.gbxBoard.Controls.Add(this.pcbOne);
@@ -82,100 +87,6 @@
             this.gbxBoard.TabIndex = 9;
             this.gbxBoard.TabStop = false;
             this.gbxBoard.Text = "Board";
-            // 
-            // gbxPieces
-            // 
-            this.gbxPieces.BackColor = System.Drawing.SystemColors.ControlText;
-            this.gbxPieces.Controls.Add(this.pcbRook);
-            this.gbxPieces.Controls.Add(this.pcbKnight);
-            this.gbxPieces.Controls.Add(this.pcbQueen);
-            this.gbxPieces.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gbxPieces.Location = new System.Drawing.Point(365, 59);
-            this.gbxPieces.Name = "gbxPieces";
-            this.gbxPieces.Size = new System.Drawing.Size(118, 354);
-            this.gbxPieces.TabIndex = 10;
-            this.gbxPieces.TabStop = false;
-            this.gbxPieces.Text = "Pieces";
-            // 
-            // btnRestart
-            // 
-            this.btnRestart.Location = new System.Drawing.Point(12, 12);
-            this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(92, 41);
-            this.btnRestart.TabIndex = 11;
-            this.btnRestart.Text = "Restart game";
-            this.btnRestart.UseVisualStyleBackColor = true;
-            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
-            // 
-            // rbnWhite
-            // 
-            this.rbnWhite.AutoSize = true;
-            this.rbnWhite.Location = new System.Drawing.Point(360, 24);
-            this.rbnWhite.Name = "rbnWhite";
-            this.rbnWhite.Size = new System.Drawing.Size(53, 17);
-            this.rbnWhite.TabIndex = 12;
-            this.rbnWhite.TabStop = true;
-            this.rbnWhite.Text = "White";
-            this.rbnWhite.UseVisualStyleBackColor = true;
-            this.rbnWhite.CheckedChanged += new System.EventHandler(this.rbnWhite_CheckedChanged);
-            // 
-            // rbnBlack
-            // 
-            this.rbnBlack.AutoSize = true;
-            this.rbnBlack.Location = new System.Drawing.Point(431, 24);
-            this.rbnBlack.Name = "rbnBlack";
-            this.rbnBlack.Size = new System.Drawing.Size(52, 17);
-            this.rbnBlack.TabIndex = 13;
-            this.rbnBlack.TabStop = true;
-            this.rbnBlack.Text = "Black";
-            this.rbnBlack.UseVisualStyleBackColor = true;
-            this.rbnBlack.CheckedChanged += new System.EventHandler(this.rbnBlack_CheckedChanged);
-            // 
-            // lblGameState
-            // 
-            this.lblGameState.AutoSize = true;
-            this.lblGameState.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGameState.Location = new System.Drawing.Point(150, 24);
-            this.lblGameState.Name = "lblGameState";
-            this.lblGameState.Size = new System.Drawing.Size(107, 19);
-            this.lblGameState.TabIndex = 14;
-            this.lblGameState.Text = "Choose pieces";
-            // 
-            // pcbRook
-            // 
-            this.pcbRook.BackColor = System.Drawing.Color.SandyBrown;
-            this.pcbRook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pcbRook.Location = new System.Drawing.Point(9, 15);
-            this.pcbRook.Name = "pcbRook";
-            this.pcbRook.Size = new System.Drawing.Size(100, 105);
-            this.pcbRook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbRook.TabIndex = 9;
-            this.pcbRook.TabStop = false;
-            this.pcbRook.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
-            // 
-            // pcbKnight
-            // 
-            this.pcbKnight.BackColor = System.Drawing.Color.SandyBrown;
-            this.pcbKnight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcbKnight.Location = new System.Drawing.Point(9, 126);
-            this.pcbKnight.Name = "pcbKnight";
-            this.pcbKnight.Size = new System.Drawing.Size(100, 105);
-            this.pcbKnight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbKnight.TabIndex = 10;
-            this.pcbKnight.TabStop = false;
-            this.pcbKnight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
-            // 
-            // pcbQueen
-            // 
-            this.pcbQueen.BackColor = System.Drawing.Color.SandyBrown;
-            this.pcbQueen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcbQueen.Location = new System.Drawing.Point(9, 237);
-            this.pcbQueen.Name = "pcbQueen";
-            this.pcbQueen.Size = new System.Drawing.Size(100, 105);
-            this.pcbQueen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbQueen.TabIndex = 11;
-            this.pcbQueen.TabStop = false;
-            this.pcbQueen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
             // 
             // pcbFive
             // 
@@ -294,11 +205,131 @@
             this.pcbFour.DragOver += new System.Windows.Forms.DragEventHandler(this.pcbAllBoard_DragOver);
             this.pcbFour.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbAllBoard_MouseDown);
             // 
+            // gbxPieces
+            // 
+            this.gbxPieces.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.gbxPieces.Controls.Add(this.pcbWizard);
+            this.gbxPieces.Controls.Add(this.pcbKing);
+            this.gbxPieces.Controls.Add(this.pcbRook);
+            this.gbxPieces.Controls.Add(this.pcbKnight);
+            this.gbxPieces.Controls.Add(this.pcbQueen);
+            this.gbxPieces.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gbxPieces.Location = new System.Drawing.Point(365, 59);
+            this.gbxPieces.Name = "gbxPieces";
+            this.gbxPieces.Size = new System.Drawing.Size(222, 351);
+            this.gbxPieces.TabIndex = 10;
+            this.gbxPieces.TabStop = false;
+            this.gbxPieces.Text = "Pieces";
+            // 
+            // pcbWizard
+            // 
+            this.pcbWizard.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbWizard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pcbWizard.Location = new System.Drawing.Point(115, 126);
+            this.pcbWizard.Name = "pcbWizard";
+            this.pcbWizard.Size = new System.Drawing.Size(100, 105);
+            this.pcbWizard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbWizard.TabIndex = 13;
+            this.pcbWizard.TabStop = false;
+            this.pcbWizard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
+            // 
+            // pcbKing
+            // 
+            this.pcbKing.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbKing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pcbKing.Location = new System.Drawing.Point(115, 15);
+            this.pcbKing.Name = "pcbKing";
+            this.pcbKing.Size = new System.Drawing.Size(100, 105);
+            this.pcbKing.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbKing.TabIndex = 12;
+            this.pcbKing.TabStop = false;
+            this.pcbKing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
+            // 
+            // pcbRook
+            // 
+            this.pcbRook.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbRook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pcbRook.Location = new System.Drawing.Point(9, 15);
+            this.pcbRook.Name = "pcbRook";
+            this.pcbRook.Size = new System.Drawing.Size(100, 105);
+            this.pcbRook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbRook.TabIndex = 9;
+            this.pcbRook.TabStop = false;
+            this.pcbRook.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
+            // 
+            // pcbKnight
+            // 
+            this.pcbKnight.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbKnight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcbKnight.Location = new System.Drawing.Point(9, 126);
+            this.pcbKnight.Name = "pcbKnight";
+            this.pcbKnight.Size = new System.Drawing.Size(100, 105);
+            this.pcbKnight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbKnight.TabIndex = 10;
+            this.pcbKnight.TabStop = false;
+            this.pcbKnight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
+            // 
+            // pcbQueen
+            // 
+            this.pcbQueen.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbQueen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcbQueen.Location = new System.Drawing.Point(9, 237);
+            this.pcbQueen.Name = "pcbQueen";
+            this.pcbQueen.Size = new System.Drawing.Size(100, 105);
+            this.pcbQueen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbQueen.TabIndex = 11;
+            this.pcbQueen.TabStop = false;
+            this.pcbQueen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pcbPieces_MouseDown);
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.Location = new System.Drawing.Point(12, 12);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(92, 41);
+            this.btnRestart.TabIndex = 11;
+            this.btnRestart.Text = "Restart game";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            // 
+            // rbnWhite
+            // 
+            this.rbnWhite.AutoSize = true;
+            this.rbnWhite.Location = new System.Drawing.Point(426, 26);
+            this.rbnWhite.Name = "rbnWhite";
+            this.rbnWhite.Size = new System.Drawing.Size(46, 17);
+            this.rbnWhite.TabIndex = 12;
+            this.rbnWhite.TabStop = true;
+            this.rbnWhite.Text = "Blue";
+            this.rbnWhite.UseVisualStyleBackColor = true;
+            this.rbnWhite.CheckedChanged += new System.EventHandler(this.rbnWhite_CheckedChanged);
+            // 
+            // rbnBlack
+            // 
+            this.rbnBlack.AutoSize = true;
+            this.rbnBlack.Location = new System.Drawing.Point(497, 26);
+            this.rbnBlack.Name = "rbnBlack";
+            this.rbnBlack.Size = new System.Drawing.Size(45, 17);
+            this.rbnBlack.TabIndex = 13;
+            this.rbnBlack.TabStop = true;
+            this.rbnBlack.Text = "Red";
+            this.rbnBlack.UseVisualStyleBackColor = true;
+            this.rbnBlack.CheckedChanged += new System.EventHandler(this.rbnBlack_CheckedChanged);
+            // 
+            // lblGameState
+            // 
+            this.lblGameState.AutoSize = true;
+            this.lblGameState.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGameState.Location = new System.Drawing.Point(150, 24);
+            this.lblGameState.Name = "lblGameState";
+            this.lblGameState.Size = new System.Drawing.Size(107, 19);
+            this.lblGameState.TabIndex = 14;
+            this.lblGameState.Text = "Choose pieces";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 422);
+            this.ClientSize = new System.Drawing.Size(596, 422);
             this.Controls.Add(this.lblGameState);
             this.Controls.Add(this.rbnBlack);
             this.Controls.Add(this.rbnWhite);
@@ -310,10 +341,6 @@
             this.Text = "TikTakChess";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbxBoard.ResumeLayout(false);
-            this.gbxPieces.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbNine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbOne)).EndInit();
@@ -323,6 +350,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbThree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbSix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFour)).EndInit();
+            this.gbxPieces.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbWizard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbKing)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,6 +381,9 @@
         private System.Windows.Forms.RadioButton rbnBlack;
         private System.Windows.Forms.GroupBox gbxPieces;
         private System.Windows.Forms.Label lblGameState;
+        private System.Windows.Forms.PictureBox pcbWizard;
+        private System.Windows.Forms.PictureBox pcbKing;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

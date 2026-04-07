@@ -104,5 +104,17 @@
   <ItemGroup>
     <None Include="Resources\TikTakChess.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\White_King.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Black_King.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Black_Wizard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\White_Wizard.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

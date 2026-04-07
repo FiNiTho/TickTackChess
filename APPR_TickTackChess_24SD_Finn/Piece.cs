@@ -43,6 +43,8 @@ namespace APPR_TickTackChess_24SD_Finn
                 case "Rook": MoveRook(); break;
                 case "Knight": MoveKnight(); break;
                 case "Queen": MoveQueen(); break;
+                case "King": MoveKing(); break;
+                case "Wizard": MoveWizard(); break;
                 default:
                     break;
             }
@@ -121,6 +123,45 @@ namespace APPR_TickTackChess_24SD_Finn
                 {
                     moveOptions.Add($"{newHor}{newVer}");
                 }
+            }
+        }
+
+        public void MoveKing()
+        {
+            int temp_hor = Math.Abs(newHor - curHor);
+            int temp_ver = Math.Abs(newVer - curVer);
+
+            //moves like an X
+            if (temp_ver == 1 && temp_hor == 1)
+            {
+                moveOptions.Add($"{newHor}{newVer}");
+            }
+            //Moves like the rook
+            else if (temp_hor == 1)
+            {
+                if (temp_ver == 0)
+                {
+                    moveOptions.Add($"{newHor}{newVer}");
+                }
+            }
+            else if (temp_ver == 1)
+            {
+                if (temp_hor == 0)
+                {
+                    moveOptions.Add($"{newHor}{newVer}");
+                }
+            }
+        }
+
+        public void MoveWizard()
+        {
+            int temp_hor = Math.Abs(newHor - curHor);
+            int temp_ver = Math.Abs(newVer - curVer);
+
+            //moves like an X
+            if (temp_ver == 1 || temp_hor == 1 || temp_ver == 2 || temp_hor == 2)
+            {
+                moveOptions.Add($"{newHor}{newVer}");
             }
         }
 

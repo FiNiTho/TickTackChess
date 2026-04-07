@@ -28,9 +28,9 @@ namespace APPR_TickTackChess_24SD_Finn
         List<Board> boardlist = new List<Board>();
         List<Piece> piecelist = new List<Piece>();
 
-        Color backgroundColor = Color.SandyBrown;
-        Color allowDropColor = Color.Green;
-        Color notAllowedDropColor = Color.Gray;
+        Color backgroundColor = Color.FromArgb(217, 160, 102);
+        Color allowDropColor = Color.FromArgb(120, 191, 71);
+        Color notAllowedDropColor = Color.FromArgb(132, 126, 135);
 
         // Used to store which pieces have been placed in setup
         List<PictureBox> White_List = new List<PictureBox>();
@@ -119,7 +119,7 @@ namespace APPR_TickTackChess_24SD_Finn
                     {
                         if (pcb.Image == null)
                         {
-                            pcb.BackColor = Color.Green;
+                            pcb.BackColor = allowDropColor;
                         }
                     }
                 }
@@ -129,7 +129,7 @@ namespace APPR_TickTackChess_24SD_Finn
                     {
                         if (pcb.Image == null)
                         {
-                            pcb.BackColor = Color.Green;
+                            pcb.BackColor = allowDropColor;
                         }
                     }
                 }
@@ -165,7 +165,7 @@ namespace APPR_TickTackChess_24SD_Finn
 
         private void pcbAllBoard_DragDrop(object sender, DragEventArgs e)
         {
-            // 1. Identify where the piece was dropped
+            // Get where the piece was dropped
             pcbTo = (PictureBox)sender;
 
             horizontal = Convert.ToInt32(pcbTo.Tag.ToString().Substring(0, 1));
@@ -173,7 +173,7 @@ namespace APPR_TickTackChess_24SD_Finn
 
             currentBoard = boardlist.FirstOrDefault(x => x.GetHorizontal() == horizontal && x.GetVertical() == vertical);
 
-            // 2. Route to the correct logic based on game phase
+            // Get correct logic based on game phase
             if (!gameState)
             {
                 HandleSetupPlacement();
@@ -183,14 +183,25 @@ namespace APPR_TickTackChess_24SD_Finn
                 HandleGameMove();
             }
 
-            // 3. Update the UI (same for setup and game moves)
+            // Special wizard ability
+            bool isDraggedPieceWizard = currentPiece.GetName() == "Wizard";
+            bool targetHasPiece = pcbTo.Image != null;
+            if (isDraggedPieceWizard && targetHasPiece)
+            {
+                pieceSwitching(pcbTo);
+            }
+            else
+            {
+                // Only clear the from square if a swap did not happen
+                pcbFrom.Image = null;
+            }
+
+            // Show image in new spot and clear old colors
             Image draggedImage = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
             pcbTo.Image = draggedImage;
-            pcbFrom.Image = null;
-
             ClearBoardColors();
 
-            // 4. Game-phase actions
+            // Game functions
             if (gameState)
             {
                 SwitchTurnAndUpdateUI();
@@ -198,7 +209,7 @@ namespace APPR_TickTackChess_24SD_Finn
                 BlockOpponentSquares();
             }
 
-            // 5. Check if the game should start (only relevant during setup)
+            // Check if game should start (only relevant during setup)
             if (!gameState && White_List.Count == 3 && Black_List.Count == 3)
             {
                 StartGame();
@@ -208,13 +219,34 @@ namespace APPR_TickTackChess_24SD_Finn
         private void pcbAllBoard_DragOver(object sender, DragEventArgs e)
         {
             pcbTo = (PictureBox)sender;
-            if (pcbTo.BackColor == Color.Green)
+            if (pcbTo.BackColor == allowDropColor)
             {
                 e.Effect = DragDropEffects.Copy;
             }
             else
             {
                 e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void pieceSwitching(PictureBox targetBox)
+        {
+            // Find the piece that was already on the square
+            Piece pieceToSwap = piecelist.FirstOrDefault(x =>
+                x.GetCurrentHorizontal() == horizontal &&
+                x.GetCurrentVertical() == vertical &&
+                x != currentPiece);
+
+            if (pieceToSwap != null)
+            {
+                // Move the old piece to the Wizards square
+                int oldHor = prevBoard.GetHorizontal();
+                int oldVer = prevBoard.GetVertical();
+
+                pieceToSwap.SetLocation(oldHor, oldVer);
+                prevBoard.SetPiece(pieceToSwap);
+
+                pcbFrom.Image = targetBox.Image;
             }
         }
 
@@ -246,12 +278,12 @@ namespace APPR_TickTackChess_24SD_Finn
                 {
                     string tag = pcb.Tag.ToString();
 
-                    if (tag == option && pcb.Image == null)
+                    if (tag == option && pcb.BackColor != notAllowedDropColor)
                     {
                         int hor = int.Parse(tag.Substring(0, 1));
                         int ver = int.Parse(tag.Substring(1, 1));
 
-                        if (checkLegalMove(hor, ver))
+                        if (checkJumpOver(hor, ver) && checkPieceSwitching(hor, ver))
                         {
                             pcb.BackColor = allowDropColor;
                         }
@@ -260,10 +292,10 @@ namespace APPR_TickTackChess_24SD_Finn
             }
         }
 
-        private bool checkLegalMove(int targetHor, int targetVer)
+        private bool checkJumpOver(int targetHor, int targetVer)
         {
             //Checks for rules of the queen and rook
-            if (currentPiece.GetName() == "Knight") return true;
+            if (currentPiece.GetName() == "Knight" || currentPiece.GetName() == "Wizard") return true;
 
             string[] parts = currentPiece.GetLocation().Split(',');
             int curH = int.Parse(parts[0]);
@@ -293,6 +325,20 @@ namespace APPR_TickTackChess_24SD_Finn
             return true;
         }
 
+        private bool checkPieceSwitching(int targetHor, int targetVer)
+        {
+            if (currentPiece.GetName() == "Wizard") return true;
+
+            PictureBox targetSquare = gbxBoard.Controls.OfType<PictureBox>().FirstOrDefault(pcb => pcb.Tag?.ToString() == $"{targetHor}{targetVer}");
+
+            if (targetSquare.Image != null)
+            {
+                    return false;
+            }
+
+            return true;
+        }
+
         //Sets the background of the pieces from th other player to gray
         private void BlockOpponentSquares()
         {
@@ -311,7 +357,7 @@ namespace APPR_TickTackChess_24SD_Finn
 
         private void StartGame()
         {
-            lblGameState.Text = "Game started, Whites turn";
+            lblGameState.Text = "Game started, Blue's turn";
             gbxPieces.Enabled = false;
             rbnWhite.Enabled = false;
             rbnBlack.Enabled = false;
@@ -323,7 +369,14 @@ namespace APPR_TickTackChess_24SD_Finn
         private void SwitchTurnAndUpdateUI()
         {
             currentTurn = currentTurn == "White" ? "Black" : "White";
-            lblGameState.Text = currentTurn + "s turn";
+            if(currentTurn == "White")
+            {
+                lblGameState.Text = "Blue's turn";
+            }
+            else
+            {
+                lblGameState.Text = "Reds turn";
+            }
         }
 
         private void HandleGameMove()
@@ -404,7 +457,7 @@ namespace APPR_TickTackChess_24SD_Finn
                         {
                             if (selectedBoard.GetVertical() != 3)
                             {
-                                MessageBox.Show("White won!");
+                                MessageBox.Show("Blue won!");
                                 ResetGame();
                             }
                         }
@@ -412,7 +465,7 @@ namespace APPR_TickTackChess_24SD_Finn
                         {
                             if (selectedBoard.GetVertical() != 1)
                             {
-                                MessageBox.Show("Black won!");
+                                MessageBox.Show("Red won!");
                                 ResetGame();
                             }
                         }
@@ -433,10 +486,14 @@ namespace APPR_TickTackChess_24SD_Finn
             pcbRook.Image = (Image)Properties.Resources.ResourceManager.GetObject(color + "_Rook");
             pcbKnight.Image = (Image)Properties.Resources.ResourceManager.GetObject(color + "_Knight");
             pcbQueen.Image = (Image)Properties.Resources.ResourceManager.GetObject(color + "_Queen");
+            pcbKing.Image = (Image)Properties.Resources.ResourceManager.GetObject(color + "_King");
+            pcbWizard.Image = (Image)Properties.Resources.ResourceManager.GetObject(color + "_Wizard");
 
             pcbRook.Tag = color;
             pcbKnight.Tag = color;
             pcbQueen.Tag = color;
+            pcbKing.Tag = color;
+            pcbWizard.Tag = color;
 
             //Gets the right list of pieces
             List<PictureBox> list = (color == "White") ? White_List : Black_List;

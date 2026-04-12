@@ -50,6 +50,7 @@
             this.rbnBlack = new System.Windows.Forms.RadioButton();
             this.lblGameState = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbxBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbNine)).BeginInit();
@@ -66,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxBoard
@@ -90,7 +92,7 @@
             // 
             // pcbFive
             // 
-            this.pcbFive.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbFive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbFive.Location = new System.Drawing.Point(116, 126);
             this.pcbFive.Name = "pcbFive";
             this.pcbFive.Size = new System.Drawing.Size(100, 105);
@@ -103,7 +105,7 @@
             // 
             // pcbNine
             // 
-            this.pcbNine.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbNine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbNine.Location = new System.Drawing.Point(222, 237);
             this.pcbNine.Name = "pcbNine";
             this.pcbNine.Size = new System.Drawing.Size(100, 105);
@@ -116,7 +118,7 @@
             // 
             // pcbOne
             // 
-            this.pcbOne.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbOne.Location = new System.Drawing.Point(10, 15);
             this.pcbOne.Name = "pcbOne";
             this.pcbOne.Size = new System.Drawing.Size(100, 105);
@@ -129,7 +131,7 @@
             // 
             // pcbEight
             // 
-            this.pcbEight.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbEight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbEight.Location = new System.Drawing.Point(116, 237);
             this.pcbEight.Name = "pcbEight";
             this.pcbEight.Size = new System.Drawing.Size(100, 105);
@@ -142,7 +144,7 @@
             // 
             // pcbTwo
             // 
-            this.pcbTwo.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbTwo.Location = new System.Drawing.Point(116, 15);
             this.pcbTwo.Name = "pcbTwo";
             this.pcbTwo.Size = new System.Drawing.Size(100, 105);
@@ -155,7 +157,7 @@
             // 
             // pcbSeven
             // 
-            this.pcbSeven.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbSeven.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbSeven.Location = new System.Drawing.Point(10, 237);
             this.pcbSeven.Name = "pcbSeven";
             this.pcbSeven.Size = new System.Drawing.Size(100, 105);
@@ -168,7 +170,7 @@
             // 
             // pcbThree
             // 
-            this.pcbThree.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbThree.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbThree.Location = new System.Drawing.Point(222, 15);
             this.pcbThree.Name = "pcbThree";
             this.pcbThree.Size = new System.Drawing.Size(100, 105);
@@ -181,7 +183,7 @@
             // 
             // pcbSix
             // 
-            this.pcbSix.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbSix.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbSix.Location = new System.Drawing.Point(222, 126);
             this.pcbSix.Name = "pcbSix";
             this.pcbSix.Size = new System.Drawing.Size(100, 105);
@@ -194,7 +196,7 @@
             // 
             // pcbFour
             // 
-            this.pcbFour.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbFour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbFour.Location = new System.Drawing.Point(10, 126);
             this.pcbFour.Name = "pcbFour";
             this.pcbFour.Size = new System.Drawing.Size(100, 105);
@@ -208,6 +210,7 @@
             // gbxPieces
             // 
             this.gbxPieces.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(32)))), ((int)(((byte)(52)))));
+            this.gbxPieces.Controls.Add(this.pictureBox1);
             this.gbxPieces.Controls.Add(this.pcbWizard);
             this.gbxPieces.Controls.Add(this.pcbKing);
             this.gbxPieces.Controls.Add(this.pcbRook);
@@ -223,7 +226,7 @@
             // 
             // pcbWizard
             // 
-            this.pcbWizard.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbWizard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbWizard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pcbWizard.Location = new System.Drawing.Point(115, 126);
             this.pcbWizard.Name = "pcbWizard";
@@ -235,7 +238,7 @@
             // 
             // pcbKing
             // 
-            this.pcbKing.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbKing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbKing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pcbKing.Location = new System.Drawing.Point(115, 15);
             this.pcbKing.Name = "pcbKing";
@@ -247,7 +250,7 @@
             // 
             // pcbRook
             // 
-            this.pcbRook.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbRook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbRook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pcbRook.Location = new System.Drawing.Point(9, 15);
             this.pcbRook.Name = "pcbRook";
@@ -259,7 +262,7 @@
             // 
             // pcbKnight
             // 
-            this.pcbKnight.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbKnight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbKnight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pcbKnight.Location = new System.Drawing.Point(9, 126);
             this.pcbKnight.Name = "pcbKnight";
@@ -271,7 +274,7 @@
             // 
             // pcbQueen
             // 
-            this.pcbQueen.BackColor = System.Drawing.Color.SandyBrown;
+            this.pcbQueen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
             this.pcbQueen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pcbQueen.Location = new System.Drawing.Point(9, 237);
             this.pcbQueen.Name = "pcbQueen";
@@ -325,6 +328,17 @@
             this.lblGameState.TabIndex = 14;
             this.lblGameState.Text = "Choose pieces";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(160)))), ((int)(((byte)(102)))));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Location = new System.Drawing.Point(116, 237);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 105);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,6 +370,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbRook)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbKnight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbQueen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,6 +399,7 @@
         private System.Windows.Forms.PictureBox pcbWizard;
         private System.Windows.Forms.PictureBox pcbKing;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
